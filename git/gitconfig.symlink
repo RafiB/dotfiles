@@ -63,3 +63,5 @@
    rem = remote -v
 
 # vim: syntax=gitconfig
+[init]
+	templatedir = ~/.git_template
