@@ -21,10 +21,10 @@ if not awful.util.file_readable(themes .. themename .. "/theme.lua") then
 end
 themedir      = themes .. themename
 
-wallpaper1    = themedir .. "/mnt/media/Pictures/wallpaper-1369249.jpg" --"/background.jpg"
-wallpaper2    = themedir .. "/mnt/media/Pictures/wallpaper-1369249.jpg" --"/background.jpg"
-wallpaper3    = themedir .. "/mnt/media/Pictures/wallpaper-1369249.jpg" --"/background.jpg"
-wallpaper4    = themedir .. "/mnt/media/Pictures/wallpaper-1369249.jpg" --"/background.jpg"
+wallpaper1    = "/mnt/media/Pictures/wallpaper-1369249.jpg" --"/background.jpg"
+wallpaper2    = "/mnt/media/Pictures/wallpaper-1369249.jpg" --"/background.jpg"
+wallpaper3    = "/mnt/media/Pictures/wallpaper-1369249.jpg" --"/background.jpg"
+wallpaper4    = "/mnt/media/Pictures/wallpaper-1369249.jpg" --"/background.jpg"
 --wallpaper2    = themedir .. "/background.png"
 --wallpaper3    = sharedthemes .. "/zenburn/zenburn-background.png"
 --wallpaper4    = sharedthemes .. "/default/background.png"
