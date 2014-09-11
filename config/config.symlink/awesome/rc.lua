@@ -299,6 +299,12 @@ globalkeys = awful.util.table.join(
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
               end),
+    awful.key({ }, "XF86AudioRaiseVolume", function()
+        awful.util.spawn("amixer set Master 9%+", false) end),
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+        awful.util.spawn("amixer set Master 9%-", false) end),
+    awful.key({ }, "XF86AudioMute", function ()
+        awful.util.spawn("amixer -D pulse set Master toggle", false) end),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end)
 )
@@ -466,5 +472,5 @@ awful.util.spawn_with_shell("ck-launch-session")
 awful.util.spawn_with_shell("run_once nm-applet")
 awful.util.spawn_with_shell("run_once shutter")
 awful.util.spawn_with_shell("run_once xrandr --output DVI-0 --mode 2560x1440 --left-of HDMI-0")
-awful.util.spawn_with_shell("feh --bg-scale /mnt/media/Pictures/HD\ Wallpapers/dual\ screen/quabbin-11.jpg")
+-- awful.util.spawn_with_shell("feh --bg-scale /mnt/media/Pictures/HD\ Wallpapers/dual\ screen/quabbin-11.jpg")
 -- }}}
