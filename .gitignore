@@ -9,4 +9,4 @@ vim/vim.symlink/bundle/*
 vim/vim.symlink/.netrwhist
 
 config/config.symlink/*
-!config/config.symlink/awesome
+!config/config.symlink/awesome*
