@@ -45,6 +45,7 @@ beautiful.init(active_theme.."/theme.lua")
 
 
 -- Custom Widgets
+local battery = require("battery")
 local clock   = require("clock")
 local cpu     = require("cpu")
 local network = require("network")
@@ -205,6 +206,8 @@ for s = 1, screen.count() do
     -- top_right_layout:add(cpu.widget)
     -- top_right_layout:add(ram.icon)
     -- top_right_layout:add(ram.widget)
+    top_right_layout:add(battery.icon)
+    top_right_layout:add(battery.widget)
     top_right_layout:add(volume.icon)
     top_right_layout:add(volume.widget)
     top_right_layout:add(space)
