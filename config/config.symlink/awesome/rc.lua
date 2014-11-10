@@ -308,6 +308,9 @@ globalkeys = awful.util.table.join(
         awful.util.spawn("amixer set Master 9%-", false) end),
     awful.key({ }, "XF86AudioMute", function ()
         awful.util.spawn("amixer -D pulse set Master toggle", false) end),
+
+    awful.key({ "Mod1", "Control" }, "l", function () awful.util.spawn("gnome-screensaver-command -l") end),
+
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end)
 )
