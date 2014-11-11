@@ -3,19 +3,19 @@ set modeline
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 set smartindent
-set tabstop=2
-set shiftwidth=2
+set tabstop=2                                 " Tab key results in 2 spaces
+set shiftwidth=2                              " The num of spaces for indenting
 set backspace=indent,eol,start
-set softtabstop=2
-set expandtab
+set softtabstop=2                             " Tab key results in 2 spaces
+set expandtab                                 " Expand tabs to spaces
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 set go+=a
-set nocompatible
-set number
-set laststatus=2
+set nocompatible                              " Make vim more useful
+set number                                    " Enable line numbers
+set laststatus=2                              " Always show statusline
 set foldenable
-set foldmethod=syntax
+set foldmethod=syntax                         " Markers are used to specify folds
 set foldopen=block,hor,percent,quickfix,tag
 set foldlevel=1
 set conceallevel=2
