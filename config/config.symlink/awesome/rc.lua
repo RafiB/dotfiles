@@ -96,7 +96,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({'mail ✉', 'im ☺', 'coding ⌨', 'music ♬', 'web', 'shell', 'other'}, s, layouts[1]) -- ⌬ ⌘ , '⏍', '⊛', '⚙'
+    tags[s] = awful.tag({'1 mail ✉', '2 im ☺', '3 coding ⌨', '4 music ♬', '5 web', '6 shell', '7 other'}, s, layouts[1]) -- ⌬ ⌘ , '⏍', '⊛', '⚙'
 end
 
 -- }}}
@@ -308,6 +308,11 @@ globalkeys = awful.util.table.join(
         awful.util.spawn("amixer set Master 9%-", false) end),
     awful.key({ }, "XF86AudioMute", function ()
         awful.util.spawn("amixer -D pulse set Master toggle", false) end),
+    awful.key({ }, "XF86Forward", function ()
+        awful.util.spawn("clementine --next", false) end),
+    awful.key({ }, "XF86Back", function ()
+        awful.util.spawn("clementine --prev", false) end),
+
 
     awful.key({ "Mod1", "Control" }, "l", function () awful.util.spawn("gnome-screensaver-command -l") end),
 
