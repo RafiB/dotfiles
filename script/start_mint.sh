@@ -4,7 +4,7 @@ sudo add-apt-repository -y ppa:klaus-vormweg/awesome > /dev/null 2>&1
 sudo apt-get update
 sudo apt-get install awesome awesome-extra lua5.1 feh xfce4-power-manager
 sudo apt-get install build-essential
-sudo apt-get install cabal-install
+sudo apt-get install cabal-install ghc
 sudo apt-get install chromium-browser
 sudo apt-get install clementine
 sudo add-apt-repository -y ppa:git-core/ppa > /dev/null 2>&1
