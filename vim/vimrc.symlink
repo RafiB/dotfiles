@@ -19,6 +19,7 @@ set foldmethod=syntax                         " Markers are used to specify fold
 set foldopen=block,hor,percent,quickfix,tag
 set foldlevel=1
 set conceallevel=2
+set hlsearch                                  " Highlight all search hits
 
 " Backup
 set noswapfile
@@ -133,6 +134,9 @@ nmap <silent> <C-Right> :wincmd l<CR>
 
 " Remap space for use with easymotion
 map <Space> \\w
+
+" Map enter to clear highlighted search hits
+nnoremap <CR> :nohlsearch<CR>
 
 " QuickFix close function; :q should close a window *and* the accompanying
 " quickfix
