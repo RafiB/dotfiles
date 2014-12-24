@@ -20,6 +20,7 @@ set foldopen=block,hor,percent,quickfix,tag
 set foldlevel=1
 set conceallevel=2
 set hlsearch                                  " Highlight all search hits
+set spell                                     " Enable spell checking
 
 " Backup
 set noswapfile
@@ -136,7 +137,7 @@ nmap <silent> <C-Right> :wincmd l<CR>
 map <Space> \\w
 
 " Map enter to clear highlighted search hits
-nnoremap <CR> :nohlsearch<CR>
+nnoremap <CR> :nohlsearch<CR><CR>
 
 " QuickFix close function; :q should close a window *and* the accompanying
 " quickfix
