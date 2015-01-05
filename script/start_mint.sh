@@ -18,3 +18,5 @@ sudo add-apt-repository -y ppa:shutter/ppa > /dev/null 2>&1
 sudo apt-get update
 sudo apt-get install shutter
 sudo apt-get install vim exuberant-ctags
+
+curl -L http://install.ohmyz.sh | sh
