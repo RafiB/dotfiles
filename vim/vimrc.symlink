@@ -92,6 +92,8 @@ call pathogen#helptags()
 filetype plugin indent on
 syntax enable
 
+let g:airline_powerline_fonts = 1
+
 " neocomplcache settings and keybindings.
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
