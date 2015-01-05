@@ -21,6 +21,7 @@ set foldlevel=1
 set conceallevel=2
 set hlsearch                                  " Highlight all search hits
 set spell                                     " Enable spell checking
+set background=dark                           " Dark theme!
 
 " Backup
 set noswapfile
@@ -34,9 +35,6 @@ if has("multi_byte")
   setglobal fileencoding=utf-8
   set fileencodings=ucs-bom,utf-8,latin1
 endif
-
-set term=xterm-256color
-set t_Co=256
 
 " Now, make python work with virtualenvs:
 if has("python") && !empty($VIRTUAL_ENV)
@@ -75,7 +73,8 @@ Bundle 'bling/vim-airline'
 Bundle 'vim-scripts/promela.vim'
 Bundle 'vim-scripts/hlint'
 Bundle 'Lokaltog/vim-easymotion'
-colorscheme jellybeans
+Bundle 'altercation/vim-colors-solarized'
+colorscheme solarized
 au VimEnter * hi Conceal ctermfg=231 ctermbg=233
 
 " vim-scripts

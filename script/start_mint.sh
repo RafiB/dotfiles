@@ -14,9 +14,18 @@ sudo apt-get install nemo-dropbox
 sudo apt-get install pgf texlive-latex-extra
 sudo apt-get install python-pip python-virtualenv python-dev pylint virtualenvwrapper
 sudo apt-get install redshift
+sudo apt-get install rxvt-unicode
 sudo add-apt-repository -y ppa:shutter/ppa > /dev/null 2>&1
 sudo apt-get update
 sudo apt-get install shutter
 sudo apt-get install vim exuberant-ctags
 
-curl -L http://install.ohmyz.sh | sh
+# Gnome-terminal solarized colours
+git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/.dotfiles/gnome-terminal-colors-solarized
+
+ln -s ~/.dotfiles/gnome-terminal-colors-solarized/set_dark.sh ~/bin/set_dark
+ln -s ~/.dotfiles/gnome-terminal-colors-solarized/set_light.sh ~/bin/set_light
+
+# Change default shell to zsh
+echo "Changing default shell to zsh for user rafi"
+chsh -s /bin/zsh rafi
