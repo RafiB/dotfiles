@@ -5,6 +5,9 @@ bind-key a send-prefix
 
 bind-key C-a send-prefix
 
+# allow mouse-wheel scrollback of shell history
+setw -g mode-mouse on
+
 # enable utf-8 on status bar
 set -g status on
 set -g status-utf8 on

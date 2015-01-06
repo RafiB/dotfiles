@@ -25,4 +25,4 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-/usr/bin/setxkbmap -option caps:hyper
+/usr/bin/setxkbmap -option caps:nocaps
