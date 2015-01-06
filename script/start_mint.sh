@@ -14,11 +14,11 @@ sudo apt-get install nemo-dropbox
 sudo apt-get install pgf texlive-latex-extra
 sudo apt-get install python-pip python-virtualenv python-dev pylint virtualenvwrapper
 sudo apt-get install redshift
-sudo apt-get install rxvt-unicode
 sudo add-apt-repository -y ppa:shutter/ppa > /dev/null 2>&1
 sudo apt-get update
 sudo apt-get install shutter
 sudo apt-get install vim exuberant-ctags
+sudo apt-get install zsh
 
 # Gnome-terminal solarized colours
 git clone https://github.com/sigurdga/gnome-terminal-colors-solarized.git ~/.dotfiles/gnome-terminal-colors-solarized
