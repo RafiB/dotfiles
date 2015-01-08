@@ -10,7 +10,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 # primary prompt
 PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
 %{$FG[032]%}%4(c:%-1~/.../%2~:%~)\
-%{$fg[$(git_state_colour)]%}$(__git_ps1 " (%s)") \
+%{$(git_state_colour)%}$(__git_ps1 " (%s)") \
 $FG[105]%(!.#.$)%{$reset_color%} '
 #PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 #RPS1='${return_code}'
@@ -49,15 +49,15 @@ function git_state_colour {
   local git_status="$(git status 2> /dev/null)"
 
   if [[ $git_status =~ "diverged" ]]; then
-    echo -e orange
+    echo -e $FG[214]
   elif [[ ! $git_status =~ "working directory clean" ]]; then
-    echo -e red
+    echo -e $fg[red]
   elif [[ $git_status =~ "Your branch is ahead of" ]]; then
-    echo -e yellow
+    echo -e $fg[yellow]
   elif [[ $git_status =~ "nothing to commit" ]]; then
-    echo -e green
+    echo -e $fg[green]
   else
-    echo -e ochre
+    echo -e $fg[ochre]
   fi
 }
 

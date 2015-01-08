@@ -76,6 +76,7 @@ Bundle 'vim-scripts/promela.vim'
 Bundle 'vim-scripts/hlint'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'kien/rainbow_parentheses.vim'
 colorscheme solarized
 au VimEnter * hi Conceal ctermfg=231 ctermbg=233
 
@@ -153,3 +154,8 @@ aug END
 " Javascript folding that doesn't suck
 let javaScript_fold=1
 au FileType javascript call JavaScriptFold()
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
