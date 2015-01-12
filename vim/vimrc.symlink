@@ -1,7 +1,57 @@
-filetype off                   " required!
-set modeline
+set nocompatible                              " Make vim more useful
+filetype off                                  " required!
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
+
+" let Vundle manage Vundle
+" required!
+Plugin 'gmarik/vundle'
+
+" My Plugins here:
+"
+" original repos on github
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
+" Plugin 'tpope/vim-abolish'
+Plugin 'klen/python-mode'
+
+Plugin 'vim-scripts/hlint'
+
+Plugin 'groenewege/vim-less'
+Plugin 'ap/vim-css-color'
+Plugin 'jelera/vim-javascript-syntax'
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'chriskempson/base16-vim'
+Plugin 'kien/rainbow_parentheses.vim'
+" Plugin 'altercation/vim-colors-solarized'
+
+Plugin 'bling/vim-airline'
+
+" Plugin 'vim-scripts/promela.vim'
+
+" vim-scripts
+Plugin 'L9'
+Plugin 'TaskList.vim'
+Plugin 'Latex-Text-Formatter'
+
+call vundle#end()
+
+" Pathogen load
+"
+" call pathogen#infect()
+" call pathogen#helptags()
+
+filetype plugin indent on
+let base16colorspace=256
+colorscheme base16-atelierdune
+set background=light                          " Dark theme!
+"colorscheme base16-brewer
+
+set modeline
 set smartindent
 set tabstop=2                                 " Tab key results in 2 spaces
 set shiftwidth=2                              " The num of spaces for indenting
@@ -11,17 +61,14 @@ set expandtab                                 " Expand tabs to spaces
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 set go+=a
-set nocompatible                              " Make vim more useful
 set number                                    " Enable line numbers
 set laststatus=2                              " Always show statusline
 set foldenable
 set foldmethod=syntax                         " Markers are used to specify folds
 set foldopen=block,hor,percent,quickfix,tag
 set foldlevel=1
-set conceallevel=2
 set hlsearch                                  " Highlight all search hits
 set spell                                     " Enable spell checking
-set background=dark                           " Dark theme!
 
 " Backup
 set noswapfile
@@ -35,8 +82,6 @@ if has("multi_byte")
   setglobal fileencoding=utf-8
   set fileencodings=ucs-bom,utf-8,latin1
 endif
-
-" set t_Co=256
 
 " Now, make python work with virtualenvs:
 if has("python") && !empty($VIRTUAL_ENV)
@@ -52,67 +97,15 @@ if 'PYTHONPATH' not in os.environ:
 EOF
 endif
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+" set t_Co=256
 
-" My Bundles here:
-"
-" original repos on github
-Bundle 'Shougo/neocomplcache'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'groenewege/vim-less'
-Bundle 'ap/vim-css-color'
-Bundle 'tpope/vim-fugitive'
-Bundle 'kien/ctrlp.vim'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'sophacles/vim-bundle-mako'
-Bundle 'klen/python-mode'
-Bundle 'tpope/vim-abolish'
-Bundle 'mjio/jellybeans.vim'
-Bundle 'bling/vim-airline'
-Bundle 'vim-scripts/promela.vim'
-Bundle 'vim-scripts/hlint'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'kien/rainbow_parentheses.vim'
-colorscheme solarized
-au VimEnter * hi Conceal ctermfg=231 ctermbg=233
-
-" vim-scripts
-Bundle 'L9'
-Bundle 'TaskList.vim'
-Bundle 'Latex-Text-Formatter'
-
-" Pathogen load
-"
-call pathogen#infect()
-call pathogen#helptags()
-
-filetype plugin indent on
 syntax enable
 
 let g:airline_powerline_fonts = 1
 
-" neocomplcache settings and keybindings.
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplcache#close_popup()
-inoremap <expr><C-e> neocomplcache#cancel_popup()
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Make syntastic work nicer
 let g:syntastic_enable_balloons = 1
@@ -154,6 +147,10 @@ aug END
 " Javascript folding that doesn't suck
 let javaScript_fold=1
 au FileType javascript call JavaScriptFold()
+
+" Conceal
+set conceallevel=2
+hi Conceal ctermfg=231 ctermbg=233
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
