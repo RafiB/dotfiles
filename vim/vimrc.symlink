@@ -49,7 +49,6 @@ filetype plugin indent on
 let base16colorspace=256
 colorscheme base16-atelierdune
 set background=light                          " Dark theme!
-"colorscheme base16-brewer
 
 set modeline
 set smartindent
@@ -103,7 +102,7 @@ syntax enable
 
 let g:airline_powerline_fonts = 1
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/home/rafi/.vim/.ycm_extra_conf.py'
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 

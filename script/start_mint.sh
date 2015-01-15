@@ -24,3 +24,6 @@ sudo apt-get install zsh
 # Change default shell to zsh
 echo "Changing default shell to zsh for user rafi"
 chsh -s /bin/zsh rafi
+
+# Stop nemo from changing the desktop
+gsettings set org.nemo.desktop show-desktop-icons false

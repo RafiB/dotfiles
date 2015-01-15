@@ -81,12 +81,23 @@ export EDITOR="vim"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias tmux="tmux -2"
-if [[ -z $TMUX ]]; then
-    export TERM='xterm-256color'
-else
-    export TERM='screen-256color'
-fi
+
+export TERM='xterm-256color'
+# if [[ -z $TMUX ]]; then
+#     export TERM='xterm-256color'
+# else
+#     export TERM='screen-256color'
+# fi
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.bin/base16-shell/base16-atelierdune.light.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+if [ -f '/etc/dircolors' ]
+then
+  eval $(dircolors -b /etc/dircolors)
+fi
+if [ -f "$HOME/.dircolors" ]
+then
+  eval $(dircolors -b $HOME/.dircolors)
+fi
