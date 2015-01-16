@@ -82,12 +82,12 @@ export EDITOR="vim"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias tmux="tmux -2"
 
-export TERM='xterm-256color'
-# if [[ -z $TMUX ]]; then
-#     export TERM='xterm-256color'
-# else
-#     export TERM='screen-256color'
-# fi
+# export TERM='xterm-256color'
+if [[ -z $TMUX ]]; then
+    export TERM='xterm-256color'
+else
+    export TERM='screen-256color'
+fi
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.bin/base16-shell/base16-atelierdune.light.sh"

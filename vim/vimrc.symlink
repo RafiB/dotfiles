@@ -25,9 +25,8 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'chriskempson/base16-vim'
 Plugin 'kien/rainbow_parentheses.vim'
-" Plugin 'altercation/vim-colors-solarized'
+Plugin 'junegunn/seoul256.vim'
 
 Plugin 'bling/vim-airline'
 
@@ -47,8 +46,9 @@ call vundle#end()
 
 filetype plugin indent on
 let base16colorspace=256
-colorscheme base16-atelierdune
+colorscheme seoul256
 set background=light                          " Dark theme!
+let g:airline_theme = 'light'
 
 set modeline
 set smartindent
@@ -95,8 +95,6 @@ if 'PYTHONPATH' not in os.environ:
     os.environ['PYTHONPATH'] += ":".join(sys.path)
 EOF
 endif
-
-" set t_Co=256
 
 syntax enable
 
