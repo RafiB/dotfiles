@@ -7,8 +7,8 @@ solarize/bin.symlink/run_once
 awesome/bin.symlink/diff-highlight
 solarize/bin.symlink/diff-highlight
 # and this file appears from solarize/bin.symlink
-awesome/bin.symlink/gnome-terminal-colors-solarized
-git/bin.symlink/gnome-terminal-colors-solarized
+awesome/bin.symlink/base16-*
+git/bin.symlink/base16-*
 
 vim/vim.symlink/bundle/*
 vim/vim.symlink/.netrwhist

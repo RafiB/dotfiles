@@ -39,15 +39,10 @@ Plugin 'Latex-Text-Formatter'
 
 call vundle#end()
 
-" Pathogen load
-"
-" call pathogen#infect()
-" call pathogen#helptags()
-
 filetype plugin indent on
 let base16colorspace=256
 colorscheme seoul256
-set background=light                          " Dark theme!
+set background=light
 let g:airline_theme = 'light'
 
 set modeline
@@ -106,8 +101,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Make syntastic work nicer
 let g:syntastic_enable_balloons = 1
-"let g:pymode_lint_ignore = 'C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511'
-let g:pymode_lint_ignore = 'E111,E114,E121,E128'
+"let g:pymode_lint_ignore = 'C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511,E111,E114,E121,E128'
 " pylint gives me the shits.
 let g:syntastic_python_checkers = ['flake8', 'pyflakes']
 " Don't whinge about c++11, you brat!
