@@ -12,6 +12,7 @@ git/bin.symlink/base16-*
 
 vim/vim.symlink/bundle/*
 vim/vim.symlink/.netrwhist
+vim/vim.symlink/.ycm_extra_conf.pyc
 
 config/config.symlink/*
 !config/config.symlink/awesome*

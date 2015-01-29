@@ -63,6 +63,7 @@ set foldopen=block,hor,percent,quickfix,tag
 set foldlevel=1
 set hlsearch                                  " Highlight all search hits
 set spell                                     " Enable spell checking
+set colorcolumn=80                            " Highlight column 80 for line length indicator
 
 " Backup
 set noswapfile
@@ -101,6 +102,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Make syntastic work nicer
 let g:syntastic_enable_balloons = 1
+let g:pymode_lint_ignore = 'E111,E114'
 "let g:pymode_lint_ignore = 'C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511,E111,E114,E121,E128'
 " pylint gives me the shits.
 let g:syntastic_python_checkers = ['flake8', 'pyflakes']
