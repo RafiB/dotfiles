@@ -63,7 +63,7 @@ set foldopen=block,hor,percent,quickfix,tag
 set foldlevel=1
 set hlsearch                                  " Highlight all search hits
 set spell                                     " Enable spell checking
-set colorcolumn=80                            " Highlight column 80 for line length indicator
+set colorcolumn=101                           " Highlight column 101 for line length indicator
 
 " Backup
 set noswapfile
