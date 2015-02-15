@@ -4,6 +4,7 @@
 git/bin.symlink/run_once
 solarize/bin.symlink/run_once
 # and this file appears from git/bin.symlink
+zsh/bin.symlink/diff-highlight
 awesome/bin.symlink/diff-highlight
 solarize/bin.symlink/diff-highlight
 # and this file appears from solarize/bin.symlink
