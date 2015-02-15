@@ -42,7 +42,7 @@ call vundle#end()
 filetype plugin indent on
 let base16colorspace=256
 colorscheme seoul256
-set background=light
+source /home/rafi/.vimrc_colour               " Needs to contain `set background=`
 let g:airline_theme = 'light'
 
 set modeline
