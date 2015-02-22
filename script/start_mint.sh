@@ -11,6 +11,7 @@ sudo apt-get install clementine
 sudo add-apt-repository -y ppa:git-core/ppa > /dev/null 2>&1
 sudo apt-get update
 sudo apt-get install git gitg bash-completion
+sudo apt-get install mosh
 sudo apt-get install nemo-dropbox
 sudo apt-get install pgf texlive-latex-extra
 sudo apt-get install python-pip python-virtualenv python-dev pylint virtualenvwrapper
