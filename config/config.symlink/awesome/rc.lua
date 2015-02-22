@@ -476,7 +476,7 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-awful.util.spawn_with_shell("run_once redshift")
+awful.util.spawn_with_shell("run_once redshift -l -33.925904:151.241307")
 awful.util.spawn_with_shell("run_once dropbox start")
 awful.util.spawn_with_shell("run_once xfce4-power-manager")
 awful.util.spawn_with_shell("ck-launch-session")
