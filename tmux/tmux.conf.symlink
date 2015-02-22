@@ -28,6 +28,12 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
+# tmux-resurrect
+set -g @tpm_plugins '              \
+  tmux-plugins/tpm                 \
+  tmux-plugins/tmux-resurrect      \
+'
+
 # Copy mode
 setw -g mode-keys vi
 # rejig copy mode to `
@@ -66,3 +72,7 @@ set -g status-left '#[fg=colour235,bg=colour252,bold] ❐ #S #[fg=colour252,bg=c
 
 set -g status-right-length 50
 set -g status-right '#[fg=colour208]#[bg=colour208,fg=black] %H:%M %d-%h-%Y'
+
+set-environment -g TMUX_PLUGIN_MANAGER_PATH '~/.tmux/plugins'
+run-shell '~/.tmux/plugins/tpm/tpm'
+run-shell '~/.tmux/plugins/tmux-resurrect/resurrect.tmux'
