@@ -26,3 +26,4 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 /usr/bin/setxkbmap -option ctrl:nocaps
+export PATH
