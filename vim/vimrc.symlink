@@ -69,6 +69,10 @@ set colorcolumn=101                           " Highlight column 101 for line le
 set noswapfile
 set backupdir=~/.vim/tmp
 
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
 if has("multi_byte")
   if &termencoding == ""
     let &termencoding = &encoding
