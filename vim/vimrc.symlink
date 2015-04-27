@@ -62,8 +62,17 @@ set foldmethod=syntax                         " Markers are used to specify fold
 set foldopen=block,hor,percent,quickfix,tag
 set foldlevel=1
 set hlsearch                                  " Highlight all search hits
-set spell                                     " Enable spell checking
+" set spell                                     " Enable spell checking
 set colorcolumn=101                           " Highlight column 101 for line length indicator
+
+" Keep ctrl+arrow working in tmux
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when xterm-keys is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
 
 " Backup
 set noswapfile
@@ -93,6 +102,7 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+let g:ctrlp_working_path_mode = 'ra'
 
 " Now, make python work with virtualenvs:
 if has("python") && !empty($VIRTUAL_ENV)
@@ -120,6 +130,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:syntastic_enable_balloons = 1
 let g:pymode_lint_ignore = 'E111,E114'
 "let g:pymode_lint_ignore = 'C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511,E111,E114,E121,E128'
+let g:syntastic_c_include_dirs = [ '../../../include', '../../../include','../../include',  '../include', 'include' ]
 " pylint gives me the shits.
 let g:syntastic_python_checkers = ['flake8', 'pyflakes']
 " Don't whinge about c++11, you brat!
