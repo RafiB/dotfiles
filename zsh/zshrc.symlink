@@ -14,13 +14,10 @@ ZSH_THEME="magic"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+export UPDATE_ZSH_DAYS=3
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -70,18 +67,9 @@ export EDITOR="vim"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+source $ZSH/oh-my-zsh.sh
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias tmux="tmux -2"
+export EDITOR="vim"
 
 # export TERM='xterm-256color'
 if [[ -z $TMUX ]]; then
@@ -101,4 +89,10 @@ fi
 if [ -f "$HOME/.dircolors" ]
 then
   eval $(dircolors -b $HOME/.dircolors)
+fi
+
+
+if [ -f ~/.motd ]
+then
+  cat ~/.motd
 fi

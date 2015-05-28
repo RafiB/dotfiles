@@ -47,7 +47,7 @@ let g:airline_theme = 'light'
 
 set modeline
 set smartindent
-set tabstop=2                                 " Tab key results in 2 spaces
+set tabstop=8                                 " Tab key results in 2 spaces
 set shiftwidth=2                              " The num of spaces for indenting
 set backspace=indent,eol,start
 set softtabstop=2                             " Tab key results in 2 spaces
@@ -130,12 +130,15 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:syntastic_enable_balloons = 1
 let g:pymode_lint_ignore = 'E111,E114'
 "let g:pymode_lint_ignore = 'C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511,E111,E114,E121,E128'
-let g:syntastic_c_include_dirs = [ '../../../include', '../../../include','../../include',  '../include', 'include' ]
+let g:syntastic_c_include_dirs = [ '../../../include', '../../../include','../../include',  '../include', 'include', '.' ]
 " pylint gives me the shits.
 let g:syntastic_python_checkers = ['flake8', 'pyflakes']
 " Don't whinge about c++11, you brat!
 let g:syntastic_cpp_compiler_options = '-I${HOME}/openmpi/env/include -std=c++11'
 let g:syntastic_auto_loc_list=1
+
+let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 0
 
 " Map f8 for Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -170,7 +173,7 @@ au FileType javascript call JavaScriptFold()
 
 " Conceal
 set conceallevel=2
-hi Conceal ctermfg=231 ctermbg=233
+hi Conceal ctermfg=233 ctermbg=208
 
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
