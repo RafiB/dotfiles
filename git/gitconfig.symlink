@@ -7,7 +7,7 @@
    editor = vim
    excludesfile = ~/dotfiles/gitignore_global
 [diff]
-   tool = vimdiff
+   tool = diff-highlight | less
    renames = copies  # Allow git diff to detect copies and renames
 [difftool]
    prompt = false
