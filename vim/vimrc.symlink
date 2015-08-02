@@ -47,11 +47,12 @@ let g:airline_theme = 'light'
 
 set modeline
 set smartindent
-set tabstop=8                                 " Tab key results in 2 spaces
-set shiftwidth=2                              " The num of spaces for indenting
 set backspace=indent,eol,start
+set tabstop=8                                 " Tab key results in 2 spaces
+set shiftwidth=2                              " Num columns for auto-indenting
 set softtabstop=2                             " Tab key results in 2 spaces
 set expandtab                                 " Expand tabs to spaces
+set smarttab                                  " Be smart when using tabs
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 set go+=a
@@ -62,8 +63,13 @@ set foldmethod=syntax                         " Markers are used to specify fold
 set foldopen=block,hor,percent,quickfix,tag
 set foldlevel=1
 set hlsearch                                  " Highlight all search hits
+set incsearch                                 " Refine search as you type
 " set spell                                     " Enable spell checking
 set colorcolumn=101                           " Highlight column 101 for line length indicator
+set magic                                     " Regular expressions
+set autoread                                  " Reread file when changed from the outside
+set showmatch                                 " Show matching brackets when cursor is over them
+set tags=./tags;/                             " Look for a tags file in this directory all the way up to /
 
 " Keep ctrl+arrow working in tmux
 if &term =~ '^screen'
@@ -74,9 +80,10 @@ if &term =~ '^screen'
     execute "set <xLeft>=\e[1;*D"
 endif
 
-" Backup
+" Turn backup off, everything's in git
+set nobackup
+set nowb
 set noswapfile
-set backupdir=~/.vim/tmp
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
