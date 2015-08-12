@@ -1,0 +1,6 @@
+[submodule "zsh/bin.symlink/base16-shell"]
+	path = zsh/bin.symlink/base16-shell
+	url = git@github.com:chriskempson/base16-shell.git
+[submodule "zsh/bin.symlink/base16-gnome-terminal"]
+	path = zsh/bin.symlink/base16-gnome-terminal
+	url = git@github.com:chriskempson/base16-gnome-terminal.git
