@@ -8,6 +8,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local vicious = require("vicious")
+local lain = require("lain")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -45,7 +46,8 @@ beautiful.init(active_theme.."/theme.lua")
 
 
 -- Custom Widgets
-local battery = require("battery")
+local battery0 = require("battery0")
+local battery1 = require("battery1")
 local clock   = require("clock")
 local cpu     = require("cpu")
 local network = require("network")
@@ -65,21 +67,25 @@ editor_cmd = terminal .. " -e " .. editor
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 
+lain.layout.centerfair.ncol = 2
+
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
+    lain.layout.centerwork,
+    lain.layout.centerfair,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
+    lain.layout.uselesstile,
     awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
+    lain.layout.uselesstile.bottom,
     awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
-    --awful.layout.suit.spiral.dwindle,
+    lain.layout.uselessfair.horizontal,
+    awful.layout.suit.fair,
+    lain.layout.uselessfair,
+    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.floating,
-    --awful.layout.suit.max.fullscreen,
-    --awful.layout.suit.magnifier
+    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.magnifier,
 }
 -- }}}
 
@@ -98,6 +104,9 @@ for s = 1, screen.count() do
     -- Each screen has its own tag table.
     tags[s] = awful.tag({'1 coding ⌨', '2 shell', '3 web', '4 mail ✉', '5 music ♬', '6 im ☺', '7 other'}, s, layouts[1]) -- ⌬ ⌘ , '⏍', '⊛', '⚙'
 end
+
+-- Make lain.layout.centerfair nicer
+awful.tag.incnmaster(2)
 
 -- }}}
 
@@ -202,12 +211,14 @@ for s = 1, screen.count() do
     top_right_layout:add(network.downwidget)
     top_right_layout:add(network.upicon)
     top_right_layout:add(network.upwidget)
-    -- top_right_layout:add(cpu.icon)
-    -- top_right_layout:add(cpu.widget)
-    -- top_right_layout:add(ram.icon)
-    -- top_right_layout:add(ram.widget)
-    top_right_layout:add(battery.icon)
-    top_right_layout:add(battery.widget)
+    top_right_layout:add(cpu.icon)
+    top_right_layout:add(cpu.widget)
+    top_right_layout:add(ram.icon)
+    top_right_layout:add(ram.widget)
+    top_right_layout:add(battery1.icon)
+    top_right_layout:add(battery1.widget)
+    top_right_layout:add(battery0.icon)
+    top_right_layout:add(battery0.widget)
     top_right_layout:add(volume.icon)
     top_right_layout:add(volume.widget)
     top_right_layout:add(space)
@@ -303,16 +314,15 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     awful.key({ }, "XF86AudioRaiseVolume", function()
-        awful.util.spawn("amixer set Master 9%+", false) end),
+        awful.util.spawn("amixer -c 0 -q sset Master 9%+", false) end),
     awful.key({ }, "XF86AudioLowerVolume", function ()
-        awful.util.spawn("amixer set Master 9%-", false) end),
+        awful.util.spawn("amixer -c 0 -q sset Master 9%-", false) end),
     awful.key({ }, "XF86AudioMute", function ()
-        awful.util.spawn("amixer -D pulse set Master toggle", false) end),
-    awful.key({ }, "XF86Forward", function ()
-        awful.util.spawn("clementine --next", false) end),
-    awful.key({ }, "XF86Back", function ()
-        awful.util.spawn("clementine --prev", false) end),
-
+        awful.util.spawn("amixer -c 0 -q -D pulse set Master toggle", false) end),
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("brightness -inc 15", false) end),
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("brightness -dec 15", false) end),
 
     awful.key({ "Mod1", "Control" }, "l", function () awful.util.spawn("gnome-screensaver-command -l") end),
 
@@ -481,7 +491,5 @@ awful.util.spawn_with_shell("run_once dropbox start")
 awful.util.spawn_with_shell("run_once xfce4-power-manager")
 awful.util.spawn_with_shell("ck-launch-session")
 awful.util.spawn_with_shell("run_once nm-applet")
-awful.util.spawn_with_shell("run_once shutter")
-awful.util.spawn_with_shell("run_once xrandr --output DVI-0 --mode 2560x1440 --left-of HDMI-0")
--- awful.util.spawn_with_shell("feh --bg-scale /mnt/media/Pictures/HD\ Wallpapers/dual\ screen/quabbin-11.jpg")
+awful.util.spawn_with_shell("run_once shutter --min_at_startup")
 -- }}}

@@ -151,4 +151,6 @@ theme.layout_floating   = theme.confdir .. "/layouts-huge/floating-green.png"
 theme.wallpaper = theme.confdir .. "/quabbin.png" -- "/background.png"
 theme.awesome_icon = theme.confdir .. "/awesome-red.png" -- "/arch.png"
 
+theme.useless_gap_width = 10
+
 return theme
