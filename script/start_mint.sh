@@ -13,7 +13,7 @@ sudo apt-get update
 sudo apt-get -y install git gitg bash-completion
 sudo apt-get -y install mosh
 sudo apt-get -y install nemo-dropbox
-sudo apt-get -y install pgf texlive-latex-extra texlive-xetex lmodern
+sudo apt-get -y install pgf texlive-latex-extra texlive-xetex texlive-luatex lmodern
 sudo apt-get -y install python-pip python-virtualenv python-dev pylint virtualenvwrapper
 sudo apt-get -y install redshift
 sudo apt-get -y install silversearcher-ag
@@ -32,3 +32,6 @@ chsh -s /bin/zsh rafi
 
 # Stop nemo from changing the desktop
 gsettings set org.nemo.desktop show-desktop-icons false
+
+# Fonts for lualatex
+luaotfload-tool --update
