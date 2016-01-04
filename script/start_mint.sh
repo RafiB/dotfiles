@@ -2,7 +2,7 @@
 sudo apt-get purge banshee libreoffice-* hexchat* pidgin* thunderbird* gimp* brasero*
 sudo add-apt-repository -y ppa:klaus-vormweg/awesome > /dev/null 2>&1
 sudo apt-get update
-sudo apt-get -y install awesome awesome-extra lua5.1 feh xfce4-power-manager
+sudo apt-get -y install awesome awesome-extra lua5.1 feh xfce4-power-manager-plugins
 sudo apt-get -y install clang cmake
 sudo apt-get -y install build-essential
 sudo apt-get -y install cabal-install ghc
