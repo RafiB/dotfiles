@@ -47,6 +47,7 @@ local mainMenu = awful.menu({
         -- { "Games", gameMenu },
         -- { "Graphics", graphicMenu },
         --{ "Media", mediaMenu },
+        { "Suspend", '/home/rafi/.bin/suspend.sh' },
         { "Util", utilMenu }
     }
 })
