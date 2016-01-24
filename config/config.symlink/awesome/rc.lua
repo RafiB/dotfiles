@@ -488,7 +488,6 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 awful.util.spawn_with_shell("run_once redshift -l -33.925904:151.241307")
 awful.util.spawn_with_shell("run_once dropbox start")
-awful.util.spawn_with_shell("run_once xfce4-power-manager")
 awful.util.spawn_with_shell("ck-launch-session")
 awful.util.spawn_with_shell("run_once nm-applet")
 awful.util.spawn_with_shell("run_once shutter --min_at_startup")
