@@ -46,6 +46,7 @@ plugins=(git pip tmux virtualenv virtualenvwrapper zsh-syntax-highlighting)
 
 # User configuration
 setopt AUTO_CD
+setopt INTERACTIVE_COMMENTS
 
 export PATH="/home/rafi/bin:/home/rafi/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 export PATH="/usr/share/virtualenvwrapper:$PATH"
