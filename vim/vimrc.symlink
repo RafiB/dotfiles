@@ -21,6 +21,7 @@ Plugin 'vim-scripts/hlint'
 Plugin 'groenewege/vim-less'
 Plugin 'ap/vim-css-color'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'Glench/Vim-Jinja2-Syntax'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
@@ -29,6 +30,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'junegunn/seoul256.vim'
 
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " Plugin 'vim-scripts/promela.vim'
 
@@ -70,6 +72,7 @@ set magic                                     " Regular expressions
 set autoread                                  " Reread file when changed from the outside
 set showmatch                                 " Show matching brackets when cursor is over them
 set tags=./tags;/                             " Look for a tags file in this directory all the way up to /
+set relativenumber
 
 " Keep ctrl+arrow working in tmux
 if &term =~ '^screen'

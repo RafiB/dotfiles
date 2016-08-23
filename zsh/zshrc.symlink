@@ -76,7 +76,11 @@ else
 fi
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.bin/base16-shell/base16-atelierdune.light.sh"
+if [ `date "+%H"` -ge 18 ] || [ `date "+%H"` -lt 8 ]; then
+    BASE16_SHELL="$HOME/.bin/base16-shell/base16-atelierdune.dark.sh"
+else
+    BASE16_SHELL="$HOME/.bin/base16-shell/base16-atelierdune.light.sh"
+fi
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 if [ -f '/etc/dircolors' ]
