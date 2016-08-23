@@ -1,0 +1,5 @@
+if [ $(echo "`xbacklight -get` < $2" | bc) -ne 0 ] && [ "$1" == "-dec" ]; then
+  xbacklight -set 5;
+else
+  xbacklight $1 $2;
+fi
