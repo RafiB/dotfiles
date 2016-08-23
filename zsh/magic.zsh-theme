@@ -11,7 +11,7 @@ local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 PROMPT='$FG[237]------------------------------------------------------------%{$reset_color%}
 %{$FG[032]%}%4(c:%-1~/.../%2~:%~)\
 %{$(git_state_colour)%}$(__git_ps1 " (%s)") \
-$FG[105]%(!.#.$)%{$reset_color%} '
+%(?.$FG[105].$FG[0])%(!.#.$)%{$reset_color%} '
 #PROMPT2='%{$fg[red]%}\ %{$reset_color%}'
 #RPS1='${return_code}'
 
@@ -50,7 +50,7 @@ function git_state_colour {
 
   if [[ $git_status =~ "diverged" ]]; then
     echo -e $FG[214]
-  elif [[ ! $git_status =~ "working directory clean" ]]; then
+  elif [[ ! $git_status =~ "working tree clean" ]]; then
     echo -e $fg[red]
   elif [[ $git_status =~ "Your branch is ahead of" ]]; then
     echo -e $fg[yellow]
