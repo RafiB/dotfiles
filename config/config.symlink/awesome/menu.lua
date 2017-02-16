@@ -8,7 +8,7 @@ local terminal = "x-terminal-emulator" -- "urxvt"
 
 local awesomeMenu = {
    { "restart", awesome.restart },
-   { "quit", awesome.quit }
+   { "quit", function() awesome.quit() end }
 }
 
 local utilMenu = {
