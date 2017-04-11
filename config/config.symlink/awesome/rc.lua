@@ -360,6 +360,9 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86MonBrightnessDown", function ()
         awful.util.spawn("brightness -dec 15", false) end),
 
+    awful.key({ "Mod1", "Control" }, "l", function () awful.util.spawn("gnome-screensaver-command -l") end),
+
+
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})

@@ -72,7 +72,6 @@ set magic                                     " Regular expressions
 set autoread                                  " Reread file when changed from the outside
 set showmatch                                 " Show matching brackets when cursor is over them
 set tags=./tags;/                             " Look for a tags file in this directory all the way up to /
-set relativenumber
 
 " Keep ctrl+arrow working in tmux
 if &term =~ '^screen'

@@ -10,6 +10,7 @@ sudo apt-get -y install chromium-browser
 sudo add-apt-repository -y ppa:git-core/ppa > /dev/null 2>&1
 sudo apt-get update
 sudo apt-get -y install git gitg bash-completion
+sudo apt-get -y install gnome-screensaver
 sudo apt-get -y install mosh
 sudo apt-get -y install pgf texlive-latex-extra texlive-xetex texlive-luatex lmodern
 sudo apt-get -y install python-pip python-virtualenv python-dev pylint virtualenvwrapper
