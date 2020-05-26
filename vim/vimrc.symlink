@@ -1,77 +1,67 @@
 set nocompatible                              " Make vim more useful
-filetype off                                  " required!
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-
-" let Vundle manage Vundle
-" required!
-Plugin 'gmarik/vundle'
-
-" My Plugins here:
-"
-" original repos on github
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar'
-" Plugin 'tpope/vim-abolish'
-Plugin 'klen/python-mode'
-
-Plugin 'vim-scripts/hlint'
-
-Plugin 'groenewege/vim-less'
-Plugin 'ap/vim-css-color'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'Glench/Vim-Jinja2-Syntax'
-
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'junegunn/seoul256.vim'
-
-Plugin 'bling/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-
-" Plugin 'vim-scripts/promela.vim'
-
-" vim-scripts
-Plugin 'L9'
-Plugin 'TaskList.vim'
-Plugin 'Latex-Text-Formatter'
-
-call vundle#end()
 
 filetype plugin indent on
-let base16colorspace=256
-colorscheme seoul256
-source /home/rafi/.vimrc_colour               " Needs to contain `set background=`
-let g:airline_theme = 'light'
 
 set modeline
 set smartindent
+set autoindent                                " Automatic program identing
+set cinkeys-=0#                               " Comments don't fiddle with indenting
 set backspace=indent,eol,start
-set tabstop=8                                 " Tab key results in 2 spaces
-set shiftwidth=2                              " Num columns for auto-indenting
-set softtabstop=2                             " Tab key results in 2 spaces
+set tabstop=4                                 " Tab key results in 4 spaces
+set shiftwidth=4                              " Num columns for auto-indenting
+set softtabstop=4                             " Tab key results in 4 spaces
 set expandtab                                 " Expand tabs to spaces
 set smarttab                                  " Be smart when using tabs
-set clipboard+=unnamed
-set clipboard+=unnamedplus
+if $TMUX == ''
+  set clipboard+=unnamed
+  set clipboard+=unnamedplus
+endif
 set go+=a
 set number                                    " Enable line numbers
 set laststatus=2                              " Always show statusline
-set foldenable
-set foldmethod=syntax                         " Markers are used to specify folds
-set foldopen=block,hor,percent,quickfix,tag
-set foldlevel=1
 set hlsearch                                  " Highlight all search hits
 set incsearch                                 " Refine search as you type
-" set spell                                     " Enable spell checking
+set list                                      " Show whitespace as special chars - see listchars
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:· " Unicode characters for various things
+"set spell                                     " Enable spell checking
+set textwidth=100                             " 100 is the new 80
 set colorcolumn=101                           " Highlight column 101 for line length indicator
 set magic                                     " Regular expressions
 set autoread                                  " Reread file when changed from the outside
 set showmatch                                 " Show matching brackets when cursor is over them
-set tags=./tags;/                             " Look for a tags file in this directory all the way up to /
+set suffixes+=.pyc                            " Ignore these files when tab-completing
+set notitle                                   " Don't set the title of the vim window
+set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules  " Ignore certain files in tab-completion
+set nowrap
+set redrawtime=10000                          " Don't give up on syntax highlighting too quickly
+
+" Turn backup off, everything's in git
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+command! Q q
+command! W w
+
+" Use Pathogen for plugin management. See update.sh in this directory.
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+call pathogen#helptags()
+
+set rtp+=/usr/bin/fzf
+set rtp+=~/.fzf
+let $FZF_DEFAULT_COMMAND = 'ag --path-to-ignore .gitignore -g ""'
+
+nmap ; :Buffers<CR>
+nmap <C-P> :Files<CR>
+nmap <S-T> :Tags<CR>
+
+colorscheme seoul256
+set bg=light
 
 " Keep ctrl+arrow working in tmux
 if &term =~ '^screen'
@@ -81,15 +71,6 @@ if &term =~ '^screen'
     execute "set <xRight>=\e[1;*C"
     execute "set <xLeft>=\e[1;*D"
 endif
-
-" Turn backup off, everything's in git
-set nobackup
-set nowb
-set noswapfile
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
 
 if has("multi_byte")
   if &termencoding == ""
@@ -104,14 +85,20 @@ endif
 if executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
 endif
-let g:ctrlp_working_path_mode = 'ra'
+
+" Tell ack.vim to use ag (the Silver Searcher) instead
+let g:ackprg = 'ag --vimgrep'
+
+" GitGutter styling to use · instead of +/-
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
+
+" SuperTab
+let g:SuperTabLongestEnhanced=1
+let g:SuperTabLongestHighlight=1
 
 " Now, make python work with virtualenvs:
 if has("python") && !empty($VIRTUAL_ENV)
@@ -127,34 +114,15 @@ if 'PYTHONPATH' not in os.environ:
 EOF
 endif
 
-syntax enable
+syntax on
 
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme = 'light'
 
-let g:ycm_global_ycm_extra_conf = '/home/rafi/.vim/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-
-" Make syntastic work nicer
-let g:syntastic_enable_balloons = 1
-let g:pymode_lint_ignore = 'E111,E114'
-"let g:pymode_lint_ignore = 'C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511C0110,W0702,W0511,E111,E114,E121,E128'
-let g:syntastic_c_include_dirs = [ '../../../include', '../../../include','../../include',  '../include', 'include', '.' ]
-" pylint gives me the shits.
-let g:syntastic_python_checkers = ['flake8', 'pyflakes']
-" Don't whinge about c++11, you brat!
-let g:syntastic_cpp_compiler_options = '-I${HOME}/openmpi/env/include -std=c++11'
-let g:syntastic_auto_loc_list=1
-
-let g:pymode_rope = 0
-let g:pymode_rope_lookup_project = 0
 
 " Map f8 for Tagbar
 nmap <F8> :TagbarToggle<CR>
-
-" Fix :s
-" Currently doesn't work reliably
-"cnoreabbrev <expr> s/ ((getcmdtype() is# ':' && getcmdline() =~# 's/')?('Subvert/'):('s'))
+nmap \e :NERDTreeToggle<CR>
 
 " Remap ctrl+arrows to move between window splits
 nmap <silent> <C-Up> :wincmd k<CR>
@@ -167,6 +135,137 @@ map <Space> \\w
 
 " Map enter to clear highlighted search hits
 nnoremap <CR> :nohlsearch<CR><CR>
+noremap Q <Nop>
+
+augroup python
+    autocmd!
+    autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 completeopt-=preview
+augroup end
+
+augroup vimrc
+  autocmd!
+  autocmd BufWinEnter,Syntax * syn sync minlines=500 maxlines=500
+augroup END
+
+" ALE
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_python_pylint_options = '
+    \ --ignored-modules=time,datetime
+    \ --disable=E1101
+              \,C0103
+              \,C0111
+              \,C0301
+              \,C0302
+              \,C0330
+              \,C0411
+              \,W0201
+              \,W0611
+              \,W0703
+              \,R0901
+              \,R0902
+              \,R0903
+              \,R0904
+              \,R0911
+              \,R0912
+              \,R0913
+              \,R0914
+              \,R0915'
+let g:ale_python_flake8_options = '--ignore=F401'  " imported but unused
+let g:ale_linters = {
+\   'python': ['flake8', 'pylint'],
+\   'java': {'classPath': ['/usr/share/java/junit4.jar']}
+\}
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+let g:ale_sign_column_always = 1
+let g:ale_set_loclist = 1
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+
+highlight link ALEWarningSign String
+highlight link ALEErrorSign Title
+highlight ColorColumn ctermbg=235
+
+let g:polyglot_disabled = ['python-indent']
+
+" let g:pymode_indent = 0
+
+" Lightline
+let g:lightline = {
+\ 'active': {
+\   'left': [['mode', 'paste'], ['filename', 'modified']],
+\   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+\ },
+\ 'component_expand': {
+\   'linter_warnings': 'LightlineLinterWarnings',
+\   'linter_errors': 'LightlineLinterErrors',
+\   'linter_ok': 'LightlineLinterOK'
+\ },
+\ 'component_type': {
+\   'readonly': 'error',
+\   'linter_warnings': 'warning',
+\   'linter_errors': 'error'
+\ },
+\ 'component_function': {
+\   'filename': 'MyFilename',
+\ },
+\}
+
+function! MyFilename()
+  let n = tabpagenr()
+  let buflist = tabpagebuflist(n)
+  let winnr = tabpagewinnr(n)
+  let bufnum = buflist[winnr - 1]
+  let bufname = expand('#'.bufnum.':t')
+  let buffullname = fnamemodify(expand('#'.bufnum.':p'), ":~:.")
+  return buffullname
+  let buffullnames = []
+  let bufnames = []
+  for i in range(1, tabpagenr('$'))
+    if i != n
+      let num = tabpagebuflist(i)[tabpagewinnr(i) - 1]
+      call add(buffullnames, expand('#' . num . ':p'))
+      call add(bufnames, expand('#' . num . ':t'))
+    endif
+  endfor
+  let i = index(bufnames, bufname)
+  if strlen(bufname) && i >= 0 && buffullnames[i] != buffullname
+    return buffullname
+  else
+    return strlen(bufname) ? bufname : '[No Name]'
+  endif
+endfunction
+
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+endfunction
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+endfunction
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓ ' : ''
+endfunction
+
+set statusline+=%{gutentags#statusline()}
+
+" Update and show lightline but only if it's visible (e.g., not in Goyo)
+autocmd User ALELint call s:MaybeUpdateLightline()
+function! s:MaybeUpdateLightline()
+  if exists('#lightline')
+    call lightline#update()
+  end
+endfunction
 
 " QuickFix close function; :q should close a window *and* the accompanying
 " quickfix
@@ -176,15 +275,20 @@ aug QFClose
   au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug END
 
-" Javascript folding that doesn't suck
-let javaScript_fold=1
-au FileType javascript call JavaScriptFold()
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 1
+let g:gutentags_project_root = ['tags']
+let g:gutentags_ctags_extra_args = [
+            \ '--file-scope=no',
+            \ ]
 
-" Conceal
-set conceallevel=2
-hi Conceal ctermfg=233 ctermbg=208
+let g:python_max_line_length = 100
 
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" let g:jedi#show_call_signatures=1
+" let g:jedi#show_call_signatures_delay = 500
+" nnoremap <silent> <C-]> :call jedi#goto()<CR>
+
+" Mypy stuff
+set makeprg=mypy-daemon
+command! -nargs=* Mypy silent make! --plugin=vim <q-args> | redraw! | cw

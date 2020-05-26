@@ -71,23 +71,19 @@ editor_cmd = terminal .. " -e " .. editor
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+modkey = "Mod3"
 
-lain.layout.centerfair.ncol = 2
+lain.layout.termfair.center.ncol = 2
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts =
 {
     lain.layout.centerwork,
-    lain.layout.centerfair,
+    lain.layout.termfair.center,
     awful.layout.suit.tile,
-    lain.layout.uselesstile,
     awful.layout.suit.tile.bottom,
-    lain.layout.uselesstile.bottom,
     awful.layout.suit.fair.horizontal,
-    lain.layout.uselessfair.horizontal,
     awful.layout.suit.fair,
-    lain.layout.uselessfair,
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,

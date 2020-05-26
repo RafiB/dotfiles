@@ -49,6 +49,7 @@
    sb = show-branch
    # Checkout
    co = checkout
+   cn = commit --amend --no-edit
    undo = reset --soft HEAD^ # Removes last commit, but does not change files
    revert = reset --hard HEAD  # DELETES ALL UNCOMMITTED CHANGES.
    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit

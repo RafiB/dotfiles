@@ -1,5 +1,8 @@
-if [ $(echo "`xbacklight -get` < $2" | bc) -ne 0 ] && [ "$1" == "-dec" ]; then
-  xbacklight -set 5;
+path=/sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight/brightness
+current=$(cat $path)
+if [ "$1" = "-dec" ]; then
+  current=$(( $current - $2 ))
 else
-  xbacklight $1 $2;
+  current=$(( $current + $2 ))
 fi
+echo $current > $path;
